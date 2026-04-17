@@ -63,6 +63,9 @@ function sauvegarderEtEnvoyer(inventaire) {
     // 2. Générer les bons de commande + calculer alertes/zéros
     var result = genererBonCommandes(ss);
 
+    // Force la validation des écritures dans les feuilles avant l'export PDF
+    SpreadsheetApp.flush();
+
     // 3. Envoyer l'email
     envoyerMails(result.alertes, result.zeros);
 
